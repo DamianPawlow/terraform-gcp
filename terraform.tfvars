@@ -1,0 +1,6 @@
+project_id = "<PROJECT_ID>"
+gcp_region = "<REGION>"
+bucket_name = "<BUCKET_NAME>"
+vpc_network = "<VPC_NAME>"
+vpc_subnetwork = "<VPC_SUBNET_NAME>"
+gke_cluster = "<CLUSTER_NAME>"
