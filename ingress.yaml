@@ -4,20 +4,20 @@
 apiVersion: networking.gke.io/v1
 kind: ManagedCertificate
 metadata:
-  name: jenkins-gke.taboosubject.pl
+  name: <FQDN>
 spec:
     domains: 
-      - jenkins-gke.taboosubject.pl
+      - <FQDN>
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: jenkins-gke-ingress
   annotations:
-    networking.gke.io/managed-certificates: "jenkins-gke.taboosubject.pl"
+    networking.gke.io/managed-certificates: "<FQDN>"
 spec:
   rules:
-  - host: jenkins-gke.taboosubject.pl
+  - host: <FQDN>
     http:
       paths:
       - pathType: ImplementationSpecific
