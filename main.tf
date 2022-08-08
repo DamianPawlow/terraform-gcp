@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket  = "terraform-practice-355211"
+    bucket  = "<GCS_BUCKET_NAME>"
     prefix  = "terraform/state"
   }
   required_providers {
