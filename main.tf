@@ -1,12 +1,16 @@
 terraform {
   backend "gcs" {
-    bucket  = "<BUCKET_NAME>"
+    bucket  = "terraform-practice-355211"
     prefix  = "terraform/state"
   }
   required_providers {
     google = {
       source = "hashicorp/google"
-      version = "3.9.0"
+      version = "4.21.0"
+    }
+    helm = {
+      source  = "hashicorp/helm"
+      version = "2.6.0"
     }
   }
 }
