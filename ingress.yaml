@@ -1,6 +1,8 @@
 #https://cloud.google.com/kubernetes-engine/docs/how-to/load-balance-ingress
 #https://cloud.google.com/kubernetes-engine/docs/how-to/ingress-multi-ssl#google-managed-certs_1
+#https://cloud.google.com/kubernetes-engine/docs/how-to/ingress-features#https_redirect
 
+#TLS certificate creation
 apiVersion: networking.gke.io/v1
 kind: ManagedCertificate
 metadata:
@@ -9,12 +11,14 @@ spec:
     domains: 
       - <FQDN>
 ---
+#Ingress configuration for HTTP(S) External LB
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: jenkins-gke-ingress
   annotations:
     networking.gke.io/managed-certificates: "<FQDN>"
+    networking.gke.io/v1beta1.FrontendConfig: "jenkins-gke-ingress"
 spec:
   rules:
   - host: <FQDN>
@@ -26,3 +30,13 @@ spec:
             name: jenkins
             port:
               number: 80
+---
+#Frontend configuration to redirect http traffic to https 
+apiVersion: networking.gke.io/v1beta1
+kind: FrontendConfig
+metadata:
+  name: jenkins-gke-ingress
+spec:
+  redirectToHttps:
+    enabled: true
+    responseCodeName: MOVED_PERMANENTLY_DEFAULT 
