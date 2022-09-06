@@ -1,9 +1,10 @@
 project_id = "<PROJECT_ID>"
 gcp_region = "<REGION>"
+ansible_client_zone = "<ZONE>"
 bucket_name = "<BUCKET_NAME>"
 vpc_network = "<VPC_NAME>"
 vpc_subnetwork = "<VPC_SUBNET_NAME>"
 gke_cluster = "<CLUSTER_NAME>"
 nat_gateway = "<NAT_GATEWAY_NAME>"
 router = "<CLOUD_ROUTER_NAME>"
-
+authorized_ip = "<IP_ADDR/32>"
